@@ -303,7 +303,11 @@ func newJszCollector(system, endpoint string, servers []*CollectedServer) promet
 			sourceLabels,
 			nil,
 		),
+<<<<<<< HEAD
 		// jetstream_stream_source_active
+=======
+		// jetstream_stream_source_active_duration_ns
+>>>>>>> feat/jsz-stream-source-metrics
 		streamSourceActive: prometheus.NewDesc(
 			prometheus.BuildFQName(system, "stream", "source_active_duration_ns"),
 			"Stream source active duration in nanoseconds (-1 indicates inactive)",

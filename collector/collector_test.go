@@ -547,7 +547,11 @@ func TestJetStreamSourceMetrics(t *testing.T) {
 			"source_deliver": "$JS.EXT.DELIVER",
 			"stream_name":    "target-stream",
 		},
+<<<<<<< HEAD
 		"jetstream_stream_source_active": {
+=======
+		"jetstream_stream_source_active_duration_ns": {
+>>>>>>> feat/jsz-stream-source-metrics
 			"source_name":    "source-stream",
 			"source_api":     "$JS.EXT.API",
 			"source_deliver": "$JS.EXT.DELIVER",
@@ -618,7 +622,11 @@ func TestJetStreamSourceMetricsWithoutExternal(t *testing.T) {
 			"source_deliver": "",
 			"stream_name":    "target-stream-no-ext",
 		},
+<<<<<<< HEAD
 		"jetstream_stream_source_active": {
+=======
+		"jetstream_stream_source_active_duration_ns": {
+>>>>>>> feat/jsz-stream-source-metrics
 			"source_name":    "source-stream-no-ext",
 			"source_api":     "",
 			"source_deliver": "",
