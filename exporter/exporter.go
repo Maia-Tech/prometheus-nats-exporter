@@ -56,6 +56,7 @@ type NATSExporterOptions struct {
 	GetVarz                 bool
 	GetSubz                 bool
 	GetRoutez               bool
+	GetRoutezDetailed       bool
 	GetGatewayz             bool
 	GetAccstatz             bool
 	GetAccountz             bool
@@ -225,7 +226,9 @@ func (ne *NATSExporter) InitializeCollectors() error {
 	if opts.GetLeafz {
 		ne.createCollector(collector.CoreSystem, "leafz")
 	}
-	if opts.GetRoutez {
+	if opts.GetRoutezDetailed {
+		ne.createCollector(collector.CoreSystem, "routez_detailed")
+	} else if opts.GetRoutez {
 		ne.createCollector(collector.CoreSystem, "routez")
 	}
 	if opts.GetJszFilter != "" {

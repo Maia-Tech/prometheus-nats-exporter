@@ -852,3 +852,44 @@ func TestMapKeys(t *testing.T) {
 		t.Fatalf("expected %v, got %v", expected, keys)
 	}
 }
+
+func TestRoutezMetricLabels(t *testing.T) {
+	var wg sync.WaitGroup
+	wg.Add(1)
+	s := pet.RunRoutezStaticServer(&wg)
+	defer s.Close()
+
+	url := fmt.Sprintf("http://localhost:%d", pet.StaticPort)
+
+	// Test first route (nats-2, rid 8)
+	expectedLabels1 := map[string]map[string]string{
+		"gnatsd_routez_route_in_msgs": {
+			"server_id":   "id",
+			"server_name": "nats-0",
+			"remote_id":   "NBUFIWO4YL5HO7W4MFI2JVEXNR7GEE74RB2IAUMNLBRUWGBIGUJNGZQD",
+			"remote_name": "nats-2",
+			"rid":         "8",
+		},
+		"gnatsd_routez_route_rtt": {
+			"server_id":   "id",
+			"server_name": "nats-0",
+			"remote_id":   "NBUFIWO4YL5HO7W4MFI2JVEXNR7GEE74RB2IAUMNLBRUWGBIGUJNGZQD",
+			"remote_name": "nats-2",
+			"rid":         "8",
+		},
+	}
+
+	// Test second route (nats-1, rid 12057384)
+	expectedLabels2 := map[string]map[string]string{
+		"gnatsd_routez_route_out_msgs": {
+			"server_id":   "id",
+			"server_name": "nats-0",
+			"remote_id":   "NAJYPZGZYIJYNZR2PHWNVVRVTSV37OXFSV5M6HLGQVIXYZNE4XMTMXBZ",
+			"remote_name": "nats-1",
+			"rid":         "12057384",
+		},
+	}
+
+	verifyLabels(CoreSystem, url, "routez_detailed", expectedLabels1, t)
+	verifyLabels(CoreSystem, url, "routez_detailed", expectedLabels2, t)
+}

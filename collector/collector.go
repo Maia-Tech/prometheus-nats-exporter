@@ -485,6 +485,9 @@ func NewCollector(system, endpoint, prefix string, servers []*CollectedServer) p
 	if isAccountzEndpoint(system, endpoint) {
 		return newAccountzCollector(getSystem(system, prefix), endpoint, servers)
 	}
+	if isRoutezEndpoint(system, endpoint) {
+		return newRoutezCollector(getSystem(system, prefix), endpoint, servers)
+	}
 	if isLeafzEndpoint(system, endpoint) {
 		return newLeafzCollector(getSystem(system, prefix), endpoint, servers)
 	}

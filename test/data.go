@@ -200,3 +200,77 @@ func leafzTestResponse() string {
 	]
 }`
 }
+
+func routezTestResponse() string {
+	return `{
+	"server_id": "NC5SLLEQOYMVDPYRC46KU5PNABPCHFB4UZRE5NASNTTEY7G4UQGQX23M",
+	"server_name": "nats-0",
+	"now": "2026-01-10T03:26:37.905351691Z",
+	"num_routes": 3,
+	"routes": [
+		{
+			"rid": 8,
+			"remote_id": "NBUFIWO4YL5HO7W4MFI2JVEXNR7GEE74RB2IAUMNLBRUWGBIGUJNGZQD",
+			"remote_name": "nats-2",
+			"did_solicit": true,
+			"is_configured": true,
+			"ip": "10.0.1.172",
+			"port": 6222,
+			"start": "2025-09-17T01:16:30.79824696Z",
+			"last_activity": "2026-01-10T03:26:37.840108603Z",
+			"rtt": "472µs",
+			"uptime": "115d2h10m7s",
+			"idle": "0s",
+			"pending_size": 0,
+			"in_msgs": 68404584,
+			"out_msgs": 161818911,
+			"in_bytes": 35471746912,
+			"out_bytes": 32384128756,
+			"subscriptions": 521,
+			"compression": "off"
+		},
+		{
+			"rid": 16,
+			"remote_id": "NBUFIWO4YL5HO7W4MFI2JVEXNR7GEE74RB2IAUMNLBRUWGBIGUJNGZQD",
+			"remote_name": "nats-2",
+			"did_solicit": true,
+			"is_configured": true,
+			"ip": "10.0.1.172",
+			"port": 6222,
+			"start": "2025-09-17T01:16:30.891549407Z",
+			"last_activity": "2025-09-17T01:16:30.891968522Z",
+			"rtt": "308µs",
+			"uptime": "115d2h10m7s",
+			"idle": "115d2h10m7s",
+			"pending_size": 0,
+			"in_msgs": 0,
+			"out_msgs": 0,
+			"in_bytes": 0,
+			"out_bytes": 0,
+			"subscriptions": 0,
+			"compression": "off"
+		},
+		{
+			"rid": 12057384,
+			"remote_id": "NAJYPZGZYIJYNZR2PHWNVVRVTSV37OXFSV5M6HLGQVIXYZNE4XMTMXBZ",
+			"remote_name": "nats-1",
+			"did_solicit": true,
+			"is_configured": true,
+			"ip": "10.0.2.215",
+			"port": 41800,
+			"start": "2026-01-09T00:09:05.741753006Z",
+			"last_activity": "2026-01-10T03:26:37.845106562Z",
+			"rtt": "916µs",
+			"uptime": "1d3h17m32s",
+			"idle": "0s",
+			"pending_size": 0,
+			"in_msgs": 460358,
+			"out_msgs": 1707116,
+			"in_bytes": 5311171407,
+			"out_bytes": 3406925157,
+			"subscriptions": 496,
+			"compression": "off"
+		}
+	]
+}`
+}
