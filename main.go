@@ -130,6 +130,8 @@ func main() {
 	flag.BoolVar(&opts.GetAccountz, "accountz", false, "Get account details metrics.")
 	flag.BoolVar(&opts.GetLeafz, "leafz", false, "Get leaf metrics.")
 	flag.BoolVar(&opts.GetRoutez, "routez", false, "Get route metrics.")
+	flag.BoolVar(&opts.GetRoutezDetailed, "routez_detailed", false,
+		"Get detailed route metrics for each route. Enables flag `routez` implicitly.")
 	flag.BoolVar(&opts.GetSubz, "subz", false, "Get subscription metrics.")
 	flag.BoolVar(&opts.GetVarz, "varz", false, "Get general metrics.")
 	flag.StringVar(&opts.GetJszFilter, "jsz", "", "Select JetStream metrics to filter (e.g streams, accounts, consumers)")
