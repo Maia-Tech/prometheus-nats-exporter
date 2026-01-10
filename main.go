@@ -76,10 +76,10 @@ func updateOptions(debugAndTrace, useSysLog bool, opts *exporter.NATSExporterOpt
 		opts.LogType = collector.RemoteSysLogType
 	}
 
-	metricsSpecified := opts.GetConnz || opts.GetVarz || opts.GetSubz || opts.GetHealthz ||
+	metricsSpecified := opts.GetConnz || opts.GetConnzDetailed || opts.GetVarz || opts.GetSubz || opts.GetHealthz ||
 		opts.GetHealthzJsEnabledOnly || opts.GetHealthzJsServerOnly ||
-		opts.GetRoutez || opts.GetGatewayz || opts.GetAccstatz || opts.GetAccountz || opts.GetLeafz ||
-		opts.GetJszFilter == ""
+		opts.GetRoutez || opts.GetRoutezDetailed || opts.GetGatewayz || opts.GetAccstatz || opts.GetAccountz || opts.GetLeafz ||
+		opts.GetJszFilter != ""
 	if !metricsSpecified {
 		// No logger setup yet, so use fmt
 		fmt.Printf("No metrics specified.  Defaulting to varz.\n")
@@ -148,6 +148,14 @@ func main() {
 	flag.BoolVar(&opts.UseInternalServerID, "use_internal_server_id", false, "Enables using ServerID from /varz")
 	flag.BoolVar(&opts.UseServerName, "use_internal_server_name", false, "Enables using ServerName from /varz")
 	flag.Parse()
+
+	// Detailed flags implicitly enable their base flags
+	if opts.GetConnzDetailed {
+		opts.GetConnz = true
+	}
+	if opts.GetRoutezDetailed {
+		opts.GetRoutez = true
+	}
 
 	opts.RetryInterval = time.Duration(retryInterval) * time.Second
 
